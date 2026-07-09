@@ -7,6 +7,7 @@ from features.keyboard_control import run_keyboard_control
 from features.battery_monitor import run_battery_monitor
 from features.camera_server import run_camera_server
 from features.obstacle_avoidance import run_obstacle_avoidance
+from features.voice_prompts import run_voice_prompts
 
 def main():
     """
@@ -31,11 +32,12 @@ def main():
         print("   [2] Battery Status Monitor")
         print("   [3] Camera Web Server")
         print("   [4] Obstacle Avoidance")
-        print("   [5] Exit System")
+        print("   [5] Voice Prompts Demo")
+        print("   [6] Exit System")
         print("[bold cyan]===================================================[/bold cyan]")
         
         try:
-            choice = input("Enter choice (1-5): ").strip()
+            choice = input("Enter choice (1-6): ").strip()
         except KeyboardInterrupt:
             print("\nExiting system...")
             break
@@ -61,10 +63,15 @@ def main():
             except Exception as e:
                 print(f"[bold red]Error running Obstacle Avoidance: {e}[/bold red]")
         elif choice == '5':
+            try:
+                run_voice_prompts(px)
+            except Exception as e:
+                print(f"[bold red]Error running Voice Prompts: {e}[/bold red]")
+        elif choice == '6':
             print("Exiting system. Goodbye!")
             break
         else:
-            print("[bold yellow]Invalid choice. Please select 1, 2, 3, 4, or 5.[/bold yellow]")
+            print("[bold yellow]Invalid choice. Please select 1, 2, 3, 4, 5, or 6.[/bold yellow]")
             
     # Clean up hardware before exit
     print("\nShutting down system...")
