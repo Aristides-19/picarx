@@ -19,6 +19,14 @@ def main():
     try:
         # Initialize the shared Picarx hardware instance once
         px = Picarx()
+        # Play engine startup sound asynchronously
+        import os
+        from robot_hat import Music
+        music = Music()
+        music.music_set_volume(100)
+        project_root = os.path.dirname(os.path.abspath(__file__))
+        startup_sound = os.path.join(project_root, "assets", "car-start-engine.wav")
+        music.sound_play_threading(startup_sound)
     except Exception as e:
         print(f"[bold red]Failed to initialize Picarx: {e}[/bold red]")
         sys.exit(1)
