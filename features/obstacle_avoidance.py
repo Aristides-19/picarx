@@ -1,12 +1,14 @@
 import time
+import os
 from picarx import Picarx
 from core.motor_drive import MotorDrive
+from robot_hat import Music
 from rich import print
 
 def run_obstacle_avoidance(px_instance=None):
     """
     Obstacle Avoidance Feature. Uses the ultrasonic sensor to detect obstacles,
-    steer away, or back up to avoid collisions.
+    steer away, or back up to avoid collisions. Plays background music during execution.
     """
     print("Starting Obstacle Avoidance Feature...")
     
@@ -15,6 +17,19 @@ def run_obstacle_avoidance(px_instance=None):
         px_instance = Picarx()
         
     drive = MotorDrive(px_instance)
+    
+    # Initialize Music and start background music
+    music = Music()
+    music.music_set_volume(80)
+    
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    bgm_path = os.path.join(project_root, "assets", "slow-trail-Ahjay_Stelino.mp3")
+    
+    print("[AUDIO] Playing background music...")
+    try:
+        music.music_play(bgm_path)
+    except Exception as e:
+        print(f"[yellow]Could not play BGM: {e}[/yellow]")
     
     # Configuration Constants
     POWER = 60
@@ -67,6 +82,13 @@ def run_obstacle_avoidance(px_instance=None):
     except KeyboardInterrupt:
         print("\nObstacle avoidance ended by user.")
     finally:
+        # Stop background music
+        print("[AUDIO] Stopping background music...")
+        try:
+            music.music_stop()
+        except:
+            pass
+            
         # Reset and stop the robot safely
         drive.stop()
         drive.set_steering(0)
