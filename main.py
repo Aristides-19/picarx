@@ -8,6 +8,7 @@ from features.battery_monitor import run_battery_monitor
 from features.camera_server import run_camera_server
 from features.obstacle_avoidance import run_obstacle_avoidance
 from features.voice_prompts import run_voice_prompts
+from features.vosk_voice_control import run_vosk_voice_control
 
 def main():
     """
@@ -33,11 +34,12 @@ def main():
         print("   [3] Camera Web Server")
         print("   [4] Obstacle Avoidance")
         print("   [5] Voice Prompts Demo")
-        print("   [6] Exit System")
+        print("   [6] Vosk Offline Voice Control")
+        print("   [7] Exit System")
         print("[bold cyan]===================================================[/bold cyan]")
         
         try:
-            choice = input("Enter choice (1-6): ").strip()
+            choice = input("Enter choice (1-7): ").strip()
         except KeyboardInterrupt:
             print("\nExiting system...")
             break
@@ -68,10 +70,15 @@ def main():
             except Exception as e:
                 print(f"[bold red]Error running Voice Prompts: {e}[/bold red]")
         elif choice == '6':
+            try:
+                run_vosk_voice_control(px)
+            except Exception as e:
+                print(f"[bold red]Error running Vosk Voice Control: {e}[/bold red]")
+        elif choice == '7':
             print("Exiting system. Goodbye!")
             break
         else:
-            print("[bold yellow]Invalid choice. Please select 1, 2, 3, 4, 5, or 6.[/bold yellow]")
+            print("[bold yellow]Invalid choice. Please select 1, 2, 3, 4, 5, 6, or 7.[/bold yellow]")
             
     # Clean up hardware before exit
     print("\nShutting down system...")
