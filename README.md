@@ -46,3 +46,23 @@ Siempre debes iniciar el proyecto usando **`sudo`** para dar permisos de hardwar
 ```bash
 sudo python3 main.py
 ```
+
+## Videos
+
+### 1. Demostración del Menú
+[Screen Record.webm](https://github.com/user-attachments/assets/2d028e42-6db3-4fcd-be7e-6ccdddf221b6)
+
+### 2. Arranque del Carrito
+https://github.com/user-attachments/assets/73095c42-3dfa-4406-8678-ef99501e035b
+
+### 3. Control por Teclado con Bocina
+https://github.com/user-attachments/assets/3d2f6396-8026-4b86-a66a-4a21523aace7
+
+### 4. Evasión de Obstáculos con Música de Fondo (autónomo)
+https://github.com/user-attachments/assets/136a747f-a441-4ad9-a964-a5b574e77267
+
+### 5. Text-To-Speech de Acciones (autónomo)
+https://github.com/user-attachments/assets/f4af8005-3be3-413f-b394-4d7526537107
+
+### 6. Control de Voz con Vosk
+https://github.com/user-attachments/assets/8d7ebfb0-0c3d-4cd7-a58a-35145d9955e4
